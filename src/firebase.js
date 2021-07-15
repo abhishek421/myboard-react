@@ -1,19 +1,17 @@
-import firebase from "firebase";
+import firebase from 'firebase';
 
-   const firebaseApp = firebase.initializeApp({
-    apiKey: "AIzaSyBTf8GBGOvaFwi3VqDFXTJFFrdCurICQL4",
-    authDomain: "instagram-clone-react-fdc4d.firebaseapp.com",
-    projectId: "instagram-clone-react-fdc4d",
-    storageBucket: "instagram-clone-react-fdc4d.appspot.com",
-    messagingSenderId: "888989367547",
-    appId: "1:888989367547:web:b7ee79734cc27b574c845e",
-    measurementId: "G-E67TCEWBNG"
+const firebaseApp = firebase.initializeApp({
+  apiKey: 'AIzaSyDmzOA0_T1csYSC6xG3WgSTW8gis_Gj6js',
+  authDomain: 'myboard421.firebaseapp.com',
+  projectId: 'myboard421',
+  storageBucket: 'myboard421.appspot.com',
+  messagingSenderId: '207966849474',
+  appId: '1:207966849474:web:999c85bf931eea2e4eae5b',
+  measurementId: 'G-5EX5GFJ587'
+});
 
-   });
+const db = firebaseApp.firestore();
+const auth = firebase.auth();
+const storage = firebase.storage();
 
-   const db = firebaseApp.firestore();
-   const auth = firebase.auth();
-   const storage = firebase.storage();
-
-   export {db, auth, storage};
-    
+export { db, auth, storage };
