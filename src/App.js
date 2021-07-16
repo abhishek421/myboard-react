@@ -1,8 +1,22 @@
-import React, { useState } from 'react';
-import './style.css';
+import React from 'react'
+import { useState,useEffect,useContext} from 'react';
+import {UserContext} from './userContext';
+import Home from './Home';
+import Auth from './Auth';
 
-export default function App() {
+function App() {
+  const [user,setUser] = useContext(UserContext);
+
   return (
-    <div className="flex flex-col md:flex-wrap items-center h-screen p-4 w-full md:bg-gray-200" />
-  );
+      <div>
+      {
+        user?
+        <Home />
+        :
+        <Auth />
+      }
+      </div>
+  )
 }
+
+export default App
