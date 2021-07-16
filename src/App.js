@@ -1,6 +1,7 @@
 import React from 'react';
 import './style.css';
 import Card from './Components/Card';
+import AddBtn from './Components/AddBtn';
 
 export default function App() {
   return (
@@ -9,6 +10,7 @@ export default function App() {
         <p className="text-2xl text-center font-semibold sticky top-0 bg-white p-4">
           Academics
         </p>
+        <AddBtn />
         <Card />
         <Card />
         <Card />
