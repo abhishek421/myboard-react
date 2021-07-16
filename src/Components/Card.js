@@ -3,16 +3,18 @@ import React, { useState, useEffect } from 'react';
 export default function Card({ due, brand, title }) {
   const [company, setCompany] = useState('');
 
-  async function fetchData() {
-    const response = await fetch(
-      `https://company.clearbit.com/v1/domains/find?name=${brand}`
-    )
-      .then(response => response.json())
-      .then(data => setCompany(data));
-  }
+  useEffect(async () => {
+    let options = {
+      method: 'GET',
+      headers: { Authorization: 'Bearer sk_fec27442c40f108717c41268f046aa0c' }
+    };
 
-  useEffect(() => {
-    fetchData();
+    let url = `https://company.clearbit.com/v1/domains/find?name=${brand}`;
+
+    const response = await fetch(url, options)
+      .then(res => res.json())
+      .then(json => setCompany(json))
+      .catch(err => console.error('error:' + err));
   });
   const months = [
     'Jan',
@@ -42,13 +44,11 @@ export default function Card({ due, brand, title }) {
   );
   return (
     <div className="flex flex-row justify-between items-center h-20 rounded-xl border-2 border-gray-300 w-full my-1 p-2">
-      <img
-        src={`//logo.clearbit.com/${brand}`}
-        className="object-contain w-16 rounded-lg"
-      />
+      <img src={company.logo} className="object-contain w-16 rounded-lg" />
       <div className="flex flex-col flex-grow mx-2">
         <p className="text-lg font-semibold">{title}</p>
         <p className="text-sm font-normal">{formatted_date}</p>
+        <p className="text-sm font-normal">{company.domain}</p>
       </div>
       <div className="h-16 w-16 bg-red-600 p-2 grid place-items-center rounded-lg text-white">
         <p className="text-xl font-bold">{days_left}</p>
